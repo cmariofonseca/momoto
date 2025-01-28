@@ -1,73 +1,123 @@
 <div class="w-full flex justify-center">
-  <div
-    class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mt-16"
-  >
-    <form>
-      <div class="grid gap-6 mb-6 md:grid-cols-2">
-        <div>
-          <label
-            for="first_name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >First name</label
-          >
-          <input
-            type="text"
-            id="first_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="John"
-            required
-          />
-        </div>
-        <div>
-          <label
-            for="last_name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Last name</label
-          >
-          <input
-            type="text"
-            id="last_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Doe"
-            required
-          />
-        </div>
-        <div>
-          <label
-            for="phone"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Phone number</label
-          >
-          <input
-            type="tel"
-            id="phone"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="123-45-678"
-            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-            required
-          />
-        </div>
-        <div class="mb-6">
-          <label
-            for="email"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Email address</label
-          >
-          <input
-            type="email"
-            id="email"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="john.doe@company.com"
-            required
-          />
-        </div>
-      </div>
-    </form>
-
-    <button
-      class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  <div class="relative inline-block text-left">
+    <!-- Texto principal -->
+    <h1 class="text-6xl font-bold text-[#C0C0C0] leading-tight mb-1">
+      Terranova
+    </h1>
+    <!-- Texto secundario -->
+    <p
+      class="text-lg font-medium text-[#D4AF37] absolute bottom-0 right-0 translate-y-1"
     >
-      Enviar
-    </button>
+      Servicios profesionales
+    </p>
   </div>
 </div>
+
+<div class="flex flex-col items-center justify-center text-center mt-6">
+  <!-- Texto principal -->
+  <h1 class="text-xl font-bold leading-tight text-gray-500">Simulador</h1>
+  <!-- Texto secundario -->
+  <p class="text-sm font-medium text-gray-400 mt-2">
+    Renueva tu espacio, sigue estos 4 pasos para simular el precio.
+  </p>
+  <p class="text-sm font-medium text-gray-400">
+    Por el momento solo prestamos servicio en Guarne, Marinilla y Rionegro.
+  </p>
+</div>
+
+<div class="w-full mt-8 mb-4">
+  <ol
+    class="items-center w-full space-y-4 sm:flex sm:justify-center sm:space-x-8 sm:space-y-0 rtl:space-x-reverse"
+  >
+    <li
+      class="flex items-center space-x-2.5 rtl:space-x-reverse"
+      [class]="{
+          'text-blue-600': stepOne,
+          'dark:text-blue-500': stepOne,
+          'text-gray-500': !stepOne,
+          'dark:text-gray-400': !stepOne,
+        }"
+    >
+      <span
+        class="flex items-center justify-center w-8 h-8 border rounded-full shrink-0"
+        [class]="{
+          'border-blue-600': stepOne,
+          'dark:border-blue-500': stepOne,
+          'border-gray-500': !stepOne,
+          'dark:border-gray-400': !stepOne,
+        }"
+      >
+        1
+      </span>
+      <span>
+        <h3 class="font-medium leading-tight">Datos personales</h3>
+      </span>
+    </li>
+    <li
+      class="flex items-center space-x-2.5 rtl:space-x-reverse"
+      [class]="{
+          'text-blue-600': stepTwo,
+          'dark:text-blue-500': stepTwo,
+          'text-gray-500': !stepTwo,
+          'dark:text-gray-400': !stepTwo,
+        }"
+    >
+      <span
+        class="flex items-center justify-center w-8 h-8 border rounded-full shrink-0"
+        [class]="{
+          'border-blue-600': stepTwo,
+          'dark:border-blue-500': stepTwo,
+          'border-gray-500': !stepTwo,
+          'dark:border-gray-400': !stepTwo,
+        }"
+      >
+        2
+      </span>
+      <span>
+        <h3 class="font-medium leading-tight">Caracteristicas</h3>
+        <h3 class="font-medium leading-tight">del terreno</h3>
+      </span>
+    </li>
+    <li
+      class="flex items-center space-x-2.5 rtl:space-x-reverse"
+      [class]="{
+          'text-blue-600': stepThree,
+          'dark:text-blue-500': stepThree,
+          'text-gray-500': !stepThree,
+          'dark:text-gray-400': !stepThree,
+        }"
+    >
+      <span
+        class="flex items-center justify-center w-8 h-8 border rounded-full shrink-0"
+        [class]="{
+          'border-blue-600': stepThree,
+          'dark:border-blue-500': stepThree,
+          'border-gray-500': !stepThree,
+          'dark:border-gray-400': !stepThree,
+        }"
+      >
+        3
+      </span>
+      <span>
+        <h3 class="font-medium leading-tight">Precotización</h3>
+      </span>
+    </li>
+  </ol>
+</div>
+
+<ng-template [ngIf]="stepOne">
+  <app-user-info (toSecondStep)="navigateToSecondStep($event)"></app-user-info>
+</ng-template>
+
+<ng-template [ngIf]="stepTwo">
+  <app-terrain-features
+    (toFirstStep)="navigateToFirstStep($event)"
+    (toThirdStep)="navigateToThirdStep($event)"
+  ></app-terrain-features>
+</ng-template>
+
+<ng-template [ngIf]="stepThree">
+  <app-pre-quotation
+    (toSecondStep)="navigateToSecondStep($event)"
+  ></app-pre-quotation>
+</ng-template>
