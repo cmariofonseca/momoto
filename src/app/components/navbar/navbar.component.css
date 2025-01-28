@@ -1,0 +1,19 @@
+.radial-gradient {
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #fffb96 0,
+    #f3d86c 25%,
+    #d4af37 50%,
+    #b58700 75%,
+    #9e6600 100%
+  );
+}
+
+.linear-gradient {
+  background: linear-gradient(
+    90deg,
+    #e4c678 0,
+    #f2e5c2 50%,
+    #e8d199 100%
+  ) !important;
+}
