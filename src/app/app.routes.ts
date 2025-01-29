@@ -18,7 +18,7 @@ export const routes: Routes = [
   {
     path: 'list-quotations',
     component: ListQuotationsComponent,
-    title: 'Quotation',
+    title: 'List quotations',
   },
   {
     path: '**',
