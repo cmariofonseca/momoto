@@ -1,6 +1,11 @@
-<div class="h-screen w-screen relative overflow-hidden">
-  <!-- Barra Superior -->
+<div class="h-screen w-screen relative overflow-hidden bg-black">
+  <!-- Navbar -->
   <app-navbar></app-navbar>
+
+  <!-- Razón social -->
+  <div class="mt-20 ml-8 fixed z-50">
+    <p class="text-4xl font-bold text-[#c0c0c0]">Terranova</p>
+  </div>
 
   <!-- Contenedor de Imagen de Fondo -->
   <div class="absolute inset-0">
@@ -11,6 +16,11 @@
     />
   </div>
 
-  <!-- Texto en la parte inferior -->
-  <app-main-description></app-main-description>
+  <!-- Degradado negro transparente -->
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-black to-transparent"
+  ></div>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
 </div>
