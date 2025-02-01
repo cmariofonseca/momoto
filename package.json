@@ -1,5 +1,5 @@
 {
-  "name": "terranova",
+  "name": "momoto",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:terranova": "node dist/terranova/server/server.mjs"
+    "serve:ssr:momoto": "node dist/momoto/server/server.mjs"
   },
   "private": true,
   "dependencies": {
