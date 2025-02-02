@@ -3,8 +3,12 @@
   <app-navbar></app-navbar>
 
   <!-- Razón social -->
-  <div class="mt-20 ml-8 fixed z-50">
+  <div class="w-full flex justify-between mt-20 px-8 fixed z-50">
     <p class="text-4xl font-bold text-[#c0c0c0]">momoto</p>
+
+    <div (click)="navigateToSignIn()" class="cursor-pointer">
+      <img src="icons/user-circle.svg" class="w-10 h-10" alt="" />
+    </div>
   </div>
 
   <!-- Contenedor de Imagen de Fondo -->
