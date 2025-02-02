@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
+
 import { HomeComponent } from './components/home/home.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 import { QuotationComponent } from './components/quotation/quotation.component';
 import { ListQuotationsComponent } from './components/list-quotations/list-quotations.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -8,6 +10,11 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    title: 'Home',
+  },
+  {
+    path: 'sign-in',
+    component: SignInComponent,
     title: 'Home',
   },
   {
