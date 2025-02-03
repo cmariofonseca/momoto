@@ -3,21 +3,19 @@
   <app-navbar></app-navbar>
 
   <!-- Razón social -->
-  <div class="w-full flex justify-between mt-20 px-8 fixed z-50">
-    <p class="text-4xl font-bold text-[#c0c0c0]">momoto</p>
-
+  <div class="w-full flex justify-between items-center mt-20 px-8 fixed z-50">
+    <p class="text-6xl font-bold text-[#c0c0c0]">momoto</p>
     <div (click)="navigateToSignIn()" class="cursor-pointer">
       <img src="icons/user-circle.svg" class="w-10 h-10" alt="" />
     </div>
   </div>
 
-  <!-- Contenedor de Imagen de Fondo -->
+  <!-- Contenedor de Video de Fondo -->
   <div class="absolute inset-0">
-    <img
-      src="images/brush-cutter-worker.jpg"
-      alt="Imagen de fondo"
-      class="w-full h-full object-cover"
-    />
+    <video autoplay loop muted playsinline class="w-full h-full object-cover">
+      <source src="videos/momoto.mp4" type="video/mp4" />
+      Tu navegador no soporta el elemento de video.
+    </video>
   </div>
 
   <!-- Degradado negro transparente -->
