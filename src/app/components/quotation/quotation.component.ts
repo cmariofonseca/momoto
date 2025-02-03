@@ -22,21 +22,18 @@ export class QuotationComponent {
   stepThree = false;
 
   navigateToFirstStep(event: any): void {
-    console.log('navigateToSecondStep');
     this.stepOne = true;
     this.stepTwo = false;
     this.stepThree = false;
   }
 
   navigateToSecondStep(event: any): void {
-    console.log('navigateToSecondStep');
     this.stepOne = false;
     this.stepTwo = true;
     this.stepThree = false;
   }
 
   navigateToThirdStep(event: any): void {
-    console.log('navigateToThirdStep');
     this.stepTwo = false;
     this.stepThree = false;
     this.stepThree = true;
