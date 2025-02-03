@@ -2,58 +2,108 @@
   <div
     class="w-full max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow-sm md:p-8"
   >
-    <form>
+    <form [formGroup]="form">
       <div class="grid gap-6 mb-6">
         <!-- area -->
         <div>
           <label
             for="area"
             class="block mb-2 text-sm font-medium text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('area')?.touched || form.get('area')?.valid,
+              'text-red-700': form.get('area')?.touched && form.get('area')?.invalid,
+            }"
           >
             Área del terreno em metros cuadrados
           </label>
           <input
             type="number"
             id="area"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-            required
+            formControlName="area"
+            class="text-sm rounded-lg block w-full p-2.5"
+            [ngClass]="{
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('area')?.touched || form.get('area')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('area')?.touched && form.get('area')?.invalid,
+            }"
           />
+          <p
+            *ngIf="form.get('area')?.touched && form.get('area')?.invalid"
+            class="mt-2 text-sm text-red-600"
+          >
+            Username already taken!
+          </p>
         </div>
 
         <!-- inclination -->
         <div>
           <label
-            for="countries"
+            for="inclination"
             class="block mb-2 text-sm font-medium text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('inclination')?.touched || form.get('inclination')?.valid,
+              'text-red-700': form.get('inclination')?.touched && form.get('inclination')?.invalid,
+            }"
           >
             Inclinación del terreno
           </label>
           <select
-            id="countries"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            id="inclination"
+            formControlName="inclination"
+            class="text-sm rounded-lg block w-full p-2.5"
+            [ngClass]="{
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('inclination')?.touched || form.get('inclination')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('inclination')?.touched && form.get('inclination')?.invalid,
+            }"
           >
-            <option selected>Terreno plano</option>
-            <option value="guarne">Inclinación menor a 45 grados</option>
-            <option value="marinilla">Inclinación mayor a 45 grados</option>
+            <option selected value="">Elije una opción</option>
+            <option value="terreno_plano">Terreno plano</option>
+            <option value="menor_45">Inclinación menor a 45 grados</option>
+            <option value="mayor_45">Inclinación mayor a 45 grados</option>
           </select>
+          <p
+            *ngIf="
+              form.get('inclination')?.touched &&
+              form.get('inclination')?.invalid
+            "
+            class="mt-2 text-sm text-red-600"
+          >
+            Username already taken!
+          </p>
         </div>
 
         <!-- last name -->
         <div>
           <label
-            for="countries"
+            for="rocky_soil"
             class="block mb-2 text-sm font-medium text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('rocky_soil')?.touched || form.get('rocky_soil')?.valid,
+              'text-red-700': form.get('rocky_soil')?.touched && form.get('rocky_soil')?.invalid,
+            }"
           >
             El terreno es pedregoso
           </label>
           <select
-            id="countries"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            id="rocky_soil"
+            formControlName="rocky_soil"
+            class="text-sm rounded-lg block w-full p-2.5"
+            [ngClass]="{
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('rocky_soil')?.touched || form.get('rocky_soil')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('rocky_soil')?.touched && form.get('rocky_soil')?.invalid,
+            }"
           >
-            <option selected>No</option>
-            <option value="si">Si</option>
+            <option selected value="">Elije una opción</option>
+            <option value="yes">Si</option>
+            <option value="no">No</option>
           </select>
+          <p
+            *ngIf="
+              form.get('rocky_soil')?.touched && form.get('rocky_soil')?.invalid
+            "
+            class="mt-2 text-sm text-red-600"
+          >
+            Username already taken!
+          </p>
         </div>
       </div>
     </form>
