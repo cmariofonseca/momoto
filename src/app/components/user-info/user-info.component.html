@@ -2,38 +2,68 @@
   <div
     class="w-full max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow-sm md:p-8"
   >
-    <form>
+    <form [formGroup]="form">
       <div class="grid gap-6 mb-6">
         <!-- name -->
         <div>
           <label
-            for="first_name"
+            for="name"
             class="block mb-2 text-sm font-medium text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('name')?.touched || form.get('name')?.valid,
+              'text-red-700': form.get('name')?.touched && form.get('name')?.invalid,
+            }"
           >
             Nombre
           </label>
           <input
             type="text"
-            id="first_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            required
+            id="name"
+            formControlName="name"
+            class="text-sm rounded-lg block w-full p-2.5"
+            [ngClass]="{
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('name')?.touched || form.get('name')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('name')?.touched && form.get('name')?.invalid,
+            }"
           />
+          <p
+            *ngIf="form.get('name')?.touched && form.get('name')?.invalid"
+            class="mt-2 text-sm text-red-600"
+          >
+            Username already taken!
+          </p>
         </div>
 
         <!-- last name -->
         <div>
           <label
-            for="last_name"
+            for="lastName"
             class="block mb-2 text-sm font-medium text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('lastName')?.touched || form.get('lastName')?.valid,
+              'text-red-700': form.get('lastName')?.touched && form.get('lastName')?.invalid,
+            }"
           >
             Apellido
           </label>
           <input
             type="text"
-            id="last_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            required
+            id="lastName"
+            formControlName="lastName"
+            class="text-sm rounded-lg block w-full p-2.5"
+            [ngClass]="{
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('lastName')?.touched || form.get('lastName')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('lastName')?.touched && form.get('lastName')?.invalid,
+            }"
           />
+          <p
+            *ngIf="
+              form.get('lastName')?.touched && form.get('lastName')?.invalid
+            "
+            class="mt-2 text-sm text-red-600"
+          >
+            Username already taken!
+          </p>
         </div>
 
         <!-- telephone -->
@@ -41,16 +71,29 @@
           <label
             for="phone"
             class="block mb-2 text-sm font-medium text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('phone')?.touched || form.get('phone')?.valid,
+              'text-red-700': form.get('phone')?.touched && form.get('phone')?.invalid,
+            }"
           >
             Numero telefono de contacto
           </label>
           <input
             type="number"
             id="phone"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-            required
+            formControlName="phone"
+            class="text-sm rounded-lg block w-full p-2.5"
+            [ngClass]="{
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('phone')?.touched || form.get('phone')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('phone')?.touched && form.get('phone')?.invalid,
+            }"
           />
+          <p
+            *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid"
+            class="mt-2 text-sm text-red-600"
+          >
+            Username already taken!
+          </p>
         </div>
 
         <!-- email -->
@@ -58,49 +101,88 @@
           <label
             for="email"
             class="block mb-2 text-sm font-medium text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('email')?.touched || form.get('email')?.valid,
+              'text-red-700': form.get('email')?.touched && form.get('email')?.invalid,
+            }"
           >
             Correo electronico
           </label>
           <input
             type="email"
             id="email"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            required
+            formControlName="email"
+            class="text-sm rounded-lg block w-full p-2.5"
+            [ngClass]="{
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('email')?.touched || form.get('email')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('email')?.touched && form.get('email')?.invalid,
+            }"
           />
+          <p
+            *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+            class="mt-2 text-sm text-red-600"
+          >
+            Username already taken!
+          </p>
         </div>
 
         <!-- town -->
         <div>
           <label
-            for="countries"
+            for="town"
             class="block mb-2 text-sm font-medium text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('town')?.touched || form.get('town')?.valid,
+              'text-red-700': form.get('town')?.touched && form.get('town')?.invalid,
+            }"
           >
             Selecciona una opción
           </label>
           <select
-            id="countries"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            id="town"
+            formControlName="town"
+            class="text-sm rounded-lg block w-full p-2.5"
+            [ngClass]="{
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('town')?.touched || form.get('town')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('town')?.touched && form.get('town')?.invalid,
+            }"
           >
-            <option selected>Elije un municipio</option>
+            <option selected value="">Elije un municipio</option>
             <option value="guarne">Guarne</option>
             <option value="marinilla">Marinilla</option>
             <option value="rionegro">Rionegro</option>
           </select>
+          <p
+            *ngIf="form.get('town')?.touched && form.get('town')?.invalid"
+            class="mt-2 text-sm text-red-600"
+          >
+            Username already taken!
+          </p>
         </div>
 
         <!-- terms and conditions -->
         <div class="flex items-start mb-4">
           <div class="flex items-center h-5">
             <input
-              id="remember"
               type="checkbox"
+              id="termsAndConditions"
+              formControlName="termsAndConditions"
               value=""
-              class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300"
-              checked
-              required
+              class="w-4 h-4 border rounded-sm focus:ring-3"
+              [ngClass]="{
+                'border-gray-300 bg-gray-50 focus:ring-blue-300': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
+                'border-red-500 bg-red-50 focos:ring-red-500': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
+              }"
             />
           </div>
-          <label for="remember" class="ms-2 text-sm font-medium text-gray-900">
+          <label
+            for="termsAndConditions"
+            class="block mb-2 text-sm font-medium ml-4 text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
+              'text-red-700': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
+            }"
+          >
             Acepto los términos y condiciones
           </label>
         </div>
