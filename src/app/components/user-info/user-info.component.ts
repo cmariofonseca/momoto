@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -8,6 +8,8 @@ import {
 import { NgClass, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { QuotationService } from '../../services/quotation/quotation.service';
+
 @Component({
   selector: 'app-user-info',
   standalone: true,
@@ -16,11 +18,13 @@ import { Router } from '@angular/router';
   styleUrl: './user-info.component.css',
 })
 export class UserInfoComponent {
-  @Output() toSecondStep = new EventEmitter<boolean>();
-
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private quotation: QuotationService
+  ) {
     this.createForm();
   }
 
@@ -41,7 +45,7 @@ export class UserInfoComponent {
 
   navigateToSecondStep(): void {
     if (this.form.valid) {
-      this.toSecondStep.emit(true);
+      this.quotation.changeState(false, true, false);
     } else {
       this.markFormGroupTouched(this.form);
     }
