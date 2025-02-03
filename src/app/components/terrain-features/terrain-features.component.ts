@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgClass, NgIf } from '@angular/common';
+
+import { QuotationService } from '../../services/quotation/quotation.service';
 
 @Component({
   selector: 'app-terrain-features',
@@ -15,12 +17,9 @@ import { NgClass, NgIf } from '@angular/common';
   styleUrl: './terrain-features.component.css',
 })
 export class TerrainFeaturesComponent {
-  @Output() toFirstStep = new EventEmitter<boolean>();
-  @Output() toThirdStep = new EventEmitter<boolean>();
-
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private quotation: QuotationService) {
     this.createForm();
   }
 
@@ -33,12 +32,12 @@ export class TerrainFeaturesComponent {
   }
 
   navigateToFirstStep(): void {
-    this.toFirstStep.emit(true);
+    this.quotation.changeState(true, false, false);
   }
 
   navigateToThirdStep(): void {
     if (this.form.valid) {
-      this.toThirdStep.emit(true);
+      this.quotation.changeState(false, false, true);
     } else {
       this.markFormGroupTouched(this.form);
     }

@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { QuotationService } from '../../services/quotation/quotation.service';
 
 @Component({
   selector: 'app-pre-quotation',
@@ -8,13 +10,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './pre-quotation.component.css',
 })
 export class PreQuotationComponent {
-  @Output() toSecondStep = new EventEmitter<boolean>();
-
   phoneNumber = '573117290060';
   message = 'Hola, quiero más información';
 
+  constructor(private quotation: QuotationService) {}
+
   navigateToSecondStep(): void {
-    this.toSecondStep.emit(true);
+    this.quotation.changeState(false, true, false);
   }
 
   get whatsappLink(): string {

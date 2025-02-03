@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { QuotationService } from '../../services/quotation/quotation.service';
 
 @Component({
   selector: 'app-quotation-stepper',
@@ -8,7 +9,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './quotation-stepper.component.css',
 })
 export class QuotationStepperComponent {
-  @Input() one: boolean = false;
-  @Input() two: boolean = false;
-  @Input() three: boolean = false;
+  constructor(public quotation: QuotationService) {}
 }
