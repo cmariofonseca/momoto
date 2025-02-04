@@ -14,6 +14,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   navigateToSignIn(): void {
-    this.router.navigate(['/sign-in']);
+    this.router.navigate(['/authentication']);
   }
 }

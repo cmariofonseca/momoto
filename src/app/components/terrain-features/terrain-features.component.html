@@ -34,36 +34,35 @@
           </p>
         </div>
 
-        <!-- inclination -->
+        <!-- lastDateGrassCutting -->
         <div>
           <label
-            for="inclination"
+            for="lastDateGrassCutting"
             class="block mb-2 text-sm font-medium text-gray-900"
             [ngClass]="{
-              'text-gray-900': !form.get('inclination')?.touched || form.get('inclination')?.valid,
-              'text-red-700': form.get('inclination')?.touched && form.get('inclination')?.invalid,
+              'text-gray-900': !form.get('lastDateGrassCutting')?.touched || form.get('lastDateGrassCutting')?.valid,
+              'text-red-700': form.get('lastDateGrassCutting')?.touched && form.get('lastDateGrassCutting')?.invalid,
             }"
           >
-            Inclinación del terreno
           </label>
           <select
-            id="inclination"
-            formControlName="inclination"
+            id="lastDateGrassCutting"
+            formControlName="lastDateGrassCutting"
             class="text-sm rounded-lg block w-full p-2.5"
             [ngClass]="{
-              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('inclination')?.touched || form.get('inclination')?.valid,
-              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('inclination')?.touched && form.get('inclination')?.invalid,
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('lastDateGrassCutting')?.touched || form.get('lastDateGrassCutting')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('lastDateGrassCutting')?.touched && form.get('lastDateGrassCutting')?.invalid,
             }"
           >
             <option selected value="">Elije una opción</option>
-            <option value="terreno_plano">Terreno plano</option>
-            <option value="menor_45">Inclinación menor a 45 grados</option>
-            <option value="mayor_45">Inclinación mayor a 45 grados</option>
+            <option value="menos_2_meses">Menos de 2 meses</option>
+            <option value="entre_2_y_6_meses">Entre 2 y 6 meses</option>
+            <option value="mas_2_meses">Mas de 6 meses</option>
           </select>
           <p
             *ngIf="
-              form.get('inclination')?.touched &&
-              form.get('inclination')?.invalid
+              form.get('lastDateGrassCutting')?.touched &&
+              form.get('lastDateGrassCutting')?.invalid
             "
             class="mt-2 text-sm text-red-600"
           >
@@ -71,34 +70,71 @@
           </p>
         </div>
 
-        <!-- last name -->
+        <!-- topographyTerrain -->
         <div>
           <label
-            for="rocky_soil"
+            for="topographyTerrain"
             class="block mb-2 text-sm font-medium text-gray-900"
             [ngClass]="{
-              'text-gray-900': !form.get('rocky_soil')?.touched || form.get('rocky_soil')?.valid,
-              'text-red-700': form.get('rocky_soil')?.touched && form.get('rocky_soil')?.invalid,
+              'text-gray-900': !form.get('topographyTerrain')?.touched || form.get('topographyTerrain')?.valid,
+              'text-red-700': form.get('topographyTerrain')?.touched && form.get('topographyTerrain')?.invalid,
             }"
           >
-            El terreno es pedregoso
+            Topografia del terreno
           </label>
           <select
-            id="rocky_soil"
-            formControlName="rocky_soil"
+            id="topographyTerrain"
+            formControlName="topographyTerrain"
             class="text-sm rounded-lg block w-full p-2.5"
             [ngClass]="{
-              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('rocky_soil')?.touched || form.get('rocky_soil')?.valid,
-              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('rocky_soil')?.touched && form.get('rocky_soil')?.invalid,
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('topographyTerrain')?.touched || form.get('topographyTerrain')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('topographyTerrain')?.touched && form.get('topographyTerrain')?.invalid,
             }"
           >
             <option selected value="">Elije una opción</option>
-            <option value="yes">Si</option>
-            <option value="no">No</option>
+            <option value="terreno_plano">Terreno plano</option>
+            <option value="terreno_pendiente">Terreno pendiente</option>
+            <option value="terreno_ondulado">Terreno ondulado</option>
           </select>
           <p
             *ngIf="
-              form.get('rocky_soil')?.touched && form.get('rocky_soil')?.invalid
+              form.get('topographyTerrain')?.touched &&
+              form.get('topographyTerrain')?.invalid
+            "
+            class="mt-2 text-sm text-red-600"
+          >
+            Username already taken!
+          </p>
+        </div>
+
+        <!-- soilType -->
+        <div>
+          <label
+            for="soilType"
+            class="block mb-2 text-sm font-medium text-gray-900"
+            [ngClass]="{
+              'text-gray-900': !form.get('soilType')?.touched || form.get('soilType')?.valid,
+              'text-red-700': form.get('soilType')?.touched && form.get('soilType')?.invalid,
+            }"
+          >
+            Tipo de suelo
+          </label>
+          <select
+            id="soilType"
+            formControlName="soilType"
+            class="text-sm rounded-lg block w-full p-2.5"
+            [ngClass]="{
+              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('soilType')?.touched || form.get('soilType')?.valid,
+              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('soilType')?.touched && form.get('soilType')?.invalid,
+            }"
+          >
+            <option selected value="">Elije una opción</option>
+            <option value="suelo_arenoso">Suelos arenoso</option>
+            <option value="suelo_pedregoso">Suelos pedregoso</option>
+          </select>
+          <p
+            *ngIf="
+              form.get('soilType')?.touched && form.get('soilType')?.invalid
             "
             class="mt-2 text-sm text-red-600"
           >

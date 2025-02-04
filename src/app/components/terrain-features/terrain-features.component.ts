@@ -26,8 +26,9 @@ export class TerrainFeaturesComponent {
   createForm(): void {
     this.form = this.fb.group({
       area: ['', [Validators.required, Validators.min(0)]],
-      inclination: ['', [Validators.required]],
-      rocky_soil: ['', [Validators.required]],
+      lastDateGrassCutting: ['', [Validators.required]],
+      topographyTerrain: [''],
+      soilType: [''],
     });
   }
 
@@ -37,6 +38,7 @@ export class TerrainFeaturesComponent {
 
   navigateToThirdStep(): void {
     if (this.form.valid) {
+      this.quotation.updateQuotation(this.form.value);
       this.quotation.changeState(false, false, true);
     } else {
       this.markFormGroupTouched(this.form);

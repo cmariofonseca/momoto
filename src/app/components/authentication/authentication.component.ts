@@ -5,7 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,13 +16,17 @@ import { Router } from '@angular/router';
   styleUrl: './authentication.component.css',
 })
 export class AuthenticationComponent {
-  form: FormGroup;
+  form!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {
+    this.createForm();
+  }
+
+  createForm(): void {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -33,11 +37,10 @@ export class AuthenticationComponent {
     if (this.form.valid) {
       const { email, password } = this.form.value;
       try {
-        await this.authService.register(email, password);
-        alert('Registro exitoso');
-        this.router.navigate(['/sign-in']);
+        await this.authService.login(email, password);
+        this.router.navigate(['/list-quotations']);
       } catch (error: any) {
-        alert('Error al registrar: ' + error.message);
+        console.log('Error al registrar: ' + error.message);
       }
     }
   }
