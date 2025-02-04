@@ -1,11 +1,14 @@
 export interface Quotation {
-  name?: string;
-  lastName?: string;
-  phone?: string;
-  email?: string;
-  town?: string;
   area?: number;
+  email?: string;
+  id?: string;
   lastDateGrassCutting?: string;
-  topographyTerrain?: string;
+  lastName?: string;
+  name?: string;
+  phone?: string;
+  price?: number;
   soilType?: string;
+  status?: string;
+  topographyTerrain?: string;
+  town?: string;
 }
