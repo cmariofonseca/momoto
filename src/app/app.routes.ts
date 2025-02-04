@@ -1,10 +1,6 @@
 import { Routes } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { QuotationComponent } from './components/quotation/quotation.component';
-import { ListQuotationsComponent } from './components/list-quotations/list-quotations.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   {
@@ -13,23 +9,35 @@ export const routes: Routes = [
     title: 'Home',
   },
   {
-    path: 'sign-in',
-    component: SignInComponent,
-    title: 'Home',
+    path: 'authentication',
+    loadComponent: () =>
+      import('./components/authentication/authentication.component').then(
+        (m) => m.AuthenticationComponent
+      ),
+    title: 'Authentication',
   },
   {
     path: 'quotation',
-    component: QuotationComponent,
+    loadComponent: () =>
+      import('./components/quotation/quotation.component').then(
+        (m) => m.QuotationComponent
+      ),
     title: 'Quotation',
   },
   {
     path: 'list-quotations',
-    component: ListQuotationsComponent,
+    loadComponent: () =>
+      import('./components/list-quotations/list-quotations.component').then(
+        (m) => m.ListQuotationsComponent
+      ),
     title: 'List quotations',
   },
   {
     path: '**',
-    component: PageNotFoundComponent,
+    loadComponent: () =>
+      import('./components/page-not-found/page-not-found.component').then(
+        (m) => m.PageNotFoundComponent
+      ),
     title: 'Page Not Found',
   },
 ];

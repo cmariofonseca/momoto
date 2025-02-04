@@ -26,15 +26,12 @@
               'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('name')?.touched && form.get('name')?.invalid,
             }"
           />
-          <p
-            *ngIf="form.get('name')?.touched && form.get('name')?.invalid"
-            class="mt-2 text-sm text-red-600"
-          >
-            Username already taken!
-          </p>
+          @if(form.get('name')?.touched && form.get('name')?.invalid){
+          <p class="mt-2 text-sm text-red-600">Username already taken!</p>
+          }
         </div>
 
-        <!-- last name -->
+        <!-- lastName -->
         <div>
           <label
             for="lastName"
@@ -56,17 +53,12 @@
               'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('lastName')?.touched && form.get('lastName')?.invalid,
             }"
           />
-          <p
-            *ngIf="
-              form.get('lastName')?.touched && form.get('lastName')?.invalid
-            "
-            class="mt-2 text-sm text-red-600"
-          >
-            Username already taken!
-          </p>
+          @if(form.get('lastName')?.touched && form.get('lastName')?.invalid){
+          <p class="mt-2 text-sm text-red-600">Username already taken!</p>
+          }
         </div>
 
-        <!-- telephone -->
+        <!-- phone -->
         <div>
           <label
             for="phone"
@@ -160,7 +152,7 @@
           </p>
         </div>
 
-        <!-- terms and conditions -->
+        <!-- termsAndConditions -->
         <div class="flex items-start mb-4">
           <div class="flex items-center h-5">
             <input

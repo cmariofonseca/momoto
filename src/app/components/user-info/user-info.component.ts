@@ -35,7 +35,7 @@ export class UserInfoComponent {
       phone: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       email: ['', [Validators.required, Validators.email]],
       town: ['', [Validators.required]],
-      termsAndConditions: [false, [Validators.requiredTrue]],
+      termsAndConditions: [true, [Validators.requiredTrue]],
     });
   }
 
@@ -45,6 +45,15 @@ export class UserInfoComponent {
 
   navigateToSecondStep(): void {
     if (this.form.valid) {
+      const { name, lastName, phone, email, town } = this.form.value;
+      const phoneValue = phone.toString();
+      this.quotation.updateQuotation({
+        name,
+        lastName,
+        phone: phoneValue,
+        email,
+        town,
+      });
       this.quotation.changeState(false, true, false);
     } else {
       this.markFormGroupTouched(this.form);
