@@ -1,6 +1,14 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Quotation } from '../../interfaces/quotation';
-import { addDoc, collection, Firestore } from '@angular/fire/firestore';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  Firestore,
+  getDocs,
+  updateDoc,
+} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +19,9 @@ export class QuotationService {
   one = signal<boolean>(true);
   two = signal<boolean>(false);
   three = signal<boolean>(false);
-  quotation = signal<Quotation>({});
+  quotation = signal<Quotation>({ status: 'active' });
 
-  path = 'quotation';
+  path = 'quotations';
 
   private _collection = collection(this.firestore, this.path);
 
@@ -45,5 +53,43 @@ export class QuotationService {
 
   createQuotation(): void {
     addDoc(this._collection, this.quotation());
+  }
+
+  async getQuotations(): Promise<Array<Quotation>> {
+    try {
+      const querySnapshot = await getDocs(this._collection);
+      const quotations: Array<Quotation> = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data() as Quotation;
+        quotations.push({ id: doc.id, ...data });
+      });
+      return quotations;
+    } catch (error) {
+      console.error('Error al obtener cotizaciones:', error);
+      return [];
+    }
+  }
+
+  async updateQuotationById(
+    id: string,
+    updatedData: Partial<Quotation>
+  ): Promise<void> {
+    try {
+      const documentRef = doc(this.firestore, `${this.path}/${id}`);
+      await updateDoc(documentRef, updatedData);
+      console.log('Cotización actualizada exitosamente');
+    } catch (error) {
+      console.error('Error al actualizar cotización:', error);
+    }
+  }
+
+  async deleteQuotationById(id: string): Promise<void> {
+    try {
+      const documentRef = doc(this.firestore, `${this.path}/${id}`);
+      await deleteDoc(documentRef);
+      console.log('Cotización eliminada exitosamente');
+    } catch (error) {
+      console.error('Error al eliminar cotización:', error);
+    }
   }
 }
