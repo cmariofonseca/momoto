@@ -8,6 +8,7 @@ import {
 import { NgClass, NgIf } from '@angular/common';
 
 import { QuotationService } from '../../services/quotation/quotation.service';
+import { Quotation } from '../../interfaces/quotation';
 
 @Component({
   selector: 'app-terrain-features',
@@ -19,7 +20,10 @@ import { QuotationService } from '../../services/quotation/quotation.service';
 export class TerrainFeaturesComponent {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private quotation: QuotationService) {
+  constructor(
+    private fb: FormBuilder,
+    private quotationService: QuotationService
+  ) {
     this.createForm();
   }
 
@@ -33,13 +37,26 @@ export class TerrainFeaturesComponent {
   }
 
   navigateToFirstStep(): void {
-    this.quotation.changeState(true, false, false);
+    this.quotationService.changeState(true, false, false);
   }
 
   navigateToThirdStep(): void {
     if (this.form.valid) {
-      this.quotation.updateQuotation(this.form.value);
-      this.quotation.changeState(false, false, true);
+      const { area, lastDateGrassCutting, ...rest } = this.form.value;
+      let value = (area || 0) * 100;
+
+      if (lastDateGrassCutting == 'Entre 2 y 6 meses') value = value * 1.2;
+      if (lastDateGrassCutting == 'Más de 6 meses') value = value * 1.5;
+
+      const updatedQuotation: Quotation = {
+        area,
+        lastDateGrassCutting,
+        price: value,
+        ...rest,
+      };
+
+      this.quotationService.updateQuotation(updatedQuotation);
+      this.quotationService.changeState(false, false, true);
     } else {
       this.markFormGroupTouched(this.form);
     }

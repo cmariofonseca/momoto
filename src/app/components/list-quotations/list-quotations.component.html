@@ -1,64 +1,66 @@
-<div class="w-full flex justify-center mt-6">
+<div (click)="goBack()">
+  <img src="icons/arrow-left-circle.svg" class="w-12 h-12 mt-4 ml-4" alt="" />
+</div>
+<div class="w-full flex justify-center mb-8">
   <p class="text-3xl">Listado de solicitudes de cotización</p>
 </div>
-
-<div class="w-full flex justify-center px-10 py-6 mb-6">
-  <div
-    class="w-full px-4 pt-4 bg-white border border-gray-200 rounded-lg shadow-sm md:px-8 md:pt-8 md:pb-4"
-  >
-    @for (quotation of quotations; track quotation.id) {
-    <div
-      [id]="quotation.id"
-      class="flex px-6 py-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50"
-      role="alert"
-    >
-      <div class="w-full max-w-xl">
-        <div class="flex items-center space-x-2 mb-4">
-          <p>Cliente :</p>
-          <b>{{ quotation.name }} {{ quotation.lastName }}</b>
-        </div>
-        <div class="flex items-center space-x-2 mb-4">
-          <p>Numero de contacto :</p>
-          <b>{{ quotation.phone }}</b>
-        </div>
-        <div class="flex items-center space-x-2 mb-4">
-          <p>Correo electronico :</p>
-          <b>{{ quotation.email }}</b>
-        </div>
-        <div class="flex items-center space-x-2 mb-4">
-          <p>Municipio :</p>
-          <b>{{ quotation.town }}</b>
-        </div>
-        <div class="flex items-center space-x-2 mb-4">
-          <p>Área del terreno :</p>
-          <b>{{ quotation.area }}</b>
-        </div>
-        <div class="flex items-center space-x-2 mb-4">
-          <p>Ultima vez corte de cesped :</p>
-          <b>{{ quotation.lastDateGrassCutting }}</b>
-        </div>
-        <div class="flex items-center space-x-2 mb-4">
-          <p>Topografía de terreno :</p>
-          <b>{{ quotation.topographyTerrain }}</b>
-        </div>
-        <div class="flex items-center space-x-2 mb-4">
-          <p>Tipo de terreno :</p>
-          <b>{{ quotation.soilType }}</b>
-        </div>
-        <div class="flex items-center space-x-2 mb-4">
-          <p>Valor guadañada :</p>
-          <b>{{ quotation.price }} pesos</b>
-        </div>
-      </div>
-
-      <button
-        class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8"
-        data-dismiss-target="#alert-1"
-        aria-label="Close"
-      >
-        <img src="icons/x-mark.svg" class="w-6 h-6" alt="" />
-      </button>
-    </div>
-    }
+<div class="w-full flex justify-center mb-6">
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3">Cliente</th>
+          <th scope="col" class="px-6 py-3">Fecha creación</th>
+          <th scope="col" class="px-6 py-3">Teléfono</th>
+          <th scope="col" class="px-6 py-3">Municipio</th>
+          <th scope="col" class="px-6 py-3">Área</th>
+          <th scope="col" class="px-6 py-3">Último corte césped</th>
+          <th scope="col" class="px-6 py-3">Costo</th>
+          <th scope="col" class="px-6 py-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (quotation of quotations; track quotation.id) {
+        <tr class="bg-white border-b border-gray-200">
+          <!-- Datos principales -->
+          <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+            {{ quotation.name }} {{ quotation.lastName }}
+          </td>
+          <td class="px-6 py-4">{{ formatDate(quotation.createdAt) }}</td>
+          <td class="px-6 py-4">{{ quotation.phone }}</td>
+          <td class="px-6 py-4">{{ quotation.town }}</td>
+          <td class="px-6 py-4">{{ quotation.area }}</td>
+          <td class="px-6 py-4">{{ quotation.lastDateGrassCutting }}</td>
+          <td class="px-6 py-4">
+            {{ quotation.price | number : "1.0-0" }} pesos
+          </td>
+          <td class="px-6 py-4">
+            <!-- Botón para expandir la fila -->
+            <button
+              (click)="toggleDetails(quotation.id || '')"
+              class="text-blue-500 hover:underline"
+            >
+              Ver más
+            </button>
+          </td>
+        </tr>
+        <!-- Fila expandida para mostrar detalles adicionales -->
+        <tr *ngIf="expandedRow === quotation.id" class="bg-gray-50">
+          <td colspan="8" class="px-6 py-4">
+            <div class="flex flex-col space-y-2">
+              <p>
+                <strong>Correo electrónico: </strong>
+                {{ quotation.email }}
+              </p>
+              <p>
+                <strong>Topografía: </strong> {{ quotation.topographyTerrain }}
+              </p>
+              <p><strong>Tipo de terreno: </strong> {{ quotation.soilType }}</p>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
   </div>
 </div>

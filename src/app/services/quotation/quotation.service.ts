@@ -7,6 +7,9 @@ import {
   doc,
   Firestore,
   getDocs,
+  orderBy,
+  query,
+  Timestamp,
   updateDoc,
 } from '@angular/fire/firestore';
 
@@ -36,7 +39,6 @@ export class QuotationService {
   }
 
   updateQuotation(partialData: Quotation): void {
-    console.log(partialData);
     this.quotation.update((currentData) => ({
       ...currentData,
       ...partialData,
@@ -52,13 +54,18 @@ export class QuotationService {
   }
 
   createQuotation(): void {
-    addDoc(this._collection, this.quotation());
+    const newQuotation = {
+      ...this.quotation(),
+      createdAt: Timestamp.now(),
+    };
+    addDoc(this._collection, newQuotation);
   }
 
-  async getQuotations(): Promise<Array<Quotation>> {
+  async getQuotations(): Promise<Quotation[]> {
     try {
-      const querySnapshot = await getDocs(this._collection);
-      const quotations: Array<Quotation> = [];
+      const q = query(this._collection, orderBy('createdAt', 'desc'));
+      const querySnapshot = await getDocs(q);
+      const quotations: Quotation[] = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data() as Quotation;
         quotations.push({ id: doc.id, ...data });
@@ -77,7 +84,6 @@ export class QuotationService {
     try {
       const documentRef = doc(this.firestore, `${this.path}/${id}`);
       await updateDoc(documentRef, updatedData);
-      console.log('Cotización actualizada exitosamente');
     } catch (error) {
       console.error('Error al actualizar cotización:', error);
     }
@@ -87,7 +93,6 @@ export class QuotationService {
     try {
       const documentRef = doc(this.firestore, `${this.path}/${id}`);
       await deleteDoc(documentRef);
-      console.log('Cotización eliminada exitosamente');
     } catch (error) {
       console.error('Error al eliminar cotización:', error);
     }

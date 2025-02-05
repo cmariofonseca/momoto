@@ -44,4 +44,8 @@ export class AuthenticationComponent {
       }
     }
   }
+
+  goBack() {
+    this.router.navigate(['/']);
+  }
 }

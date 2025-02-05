@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { QuotationService } from '../../services/quotation/quotation.service';
+import { Quotation } from '../../interfaces/quotation';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-pre-quotation',
   standalone: true,
-  imports: [],
+  imports: [DecimalPipe],
   templateUrl: './pre-quotation.component.html',
   styleUrl: './pre-quotation.component.css',
 })
-export class PreQuotationComponent {
+export class PreQuotationComponent implements OnInit {
+  quotation: Quotation = {};
+
   phoneNumber = '573117290060';
   message = 'Hola, quiero más información';
 
-  constructor(private quotation: QuotationService) {}
+  constructor(private quotationService: QuotationService) {}
+
+  ngOnInit(): void {
+    this.quotation = this.quotationService.quotation();
+  }
 
   navigateToSecondStep(): void {
-    this.quotation.changeState(false, true, false);
+    this.quotationService.changeState(false, true, false);
   }
 
   get whatsappLink(): string {
