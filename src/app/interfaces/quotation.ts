@@ -1,5 +1,6 @@
 export interface Quotation {
   area?: number;
+  createdAt?: any;
   email?: string;
   id?: string;
   lastDateGrassCutting?: string;

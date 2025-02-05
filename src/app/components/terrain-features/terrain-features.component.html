@@ -1,4 +1,4 @@
-<div class="w-full flex justify-center px-2">
+<div class="w-full flex justify-center px-2 mb-6">
   <div
     class="w-full max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow-sm md:p-8"
   >
@@ -14,18 +14,24 @@
               'text-red-700': form.get('area')?.touched && form.get('area')?.invalid,
             }"
           >
-            Área del terreno em metros cuadrados
+            Área del terreno en metros cuadrados
           </label>
-          <input
-            type="number"
-            id="area"
-            formControlName="area"
-            class="text-sm rounded-lg block w-full p-2.5"
-            [ngClass]="{
-              'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('area')?.touched || form.get('area')?.valid,
-              'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('area')?.touched && form.get('area')?.invalid,
-            }"
-          />
+          <div class="flex">
+            <input
+              type="number"
+              id="area"
+              formControlName="area"
+              class="text-sm rounded-lg block w-full p-2.5"
+              placeholder="7000"
+              [ngClass]="{
+                'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('area')?.touched || form.get('area')?.valid,
+                'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('area')?.touched && form.get('area')?.invalid,
+              }"
+            />
+            <div class="flex w-56 ml-4 justify-center items-center">
+              <p>metros cuadrados</p>
+            </div>
+          </div>
           <p
             *ngIf="form.get('area')?.touched && form.get('area')?.invalid"
             class="mt-2 text-sm text-red-600"
@@ -44,7 +50,7 @@
               'text-red-700': form.get('lastDateGrassCutting')?.touched && form.get('lastDateGrassCutting')?.invalid,
             }"
           >
-            ¿Hace cuanto tiempo fue la ultima vez que se corto el cesped?
+            ¿Cuánto tiempo ha pasado desde la última vez que cortaste el césped?
           </label>
           <select
             id="lastDateGrassCutting"
@@ -56,9 +62,9 @@
             }"
           >
             <option selected value="">Elije una opción</option>
-            <option value="menos_2_meses">Menos de 2 meses</option>
-            <option value="entre_2_y_6_meses">Entre 2 y 6 meses</option>
-            <option value="mas_2_meses">Mas de 6 meses</option>
+            <option value="Menos de 2 meses">Menos de 2 meses</option>
+            <option value="Entre 2 y 6 meses">Entre 2 y 6 meses</option>
+            <option value="Más de 6 meses">Más de 6 meses</option>
           </select>
           <p
             *ngIf="
@@ -82,6 +88,7 @@
             }"
           >
             Topografia del terreno
+            <small class="text-gray-400">(opcional)</small>
           </label>
           <select
             id="topographyTerrain"
@@ -93,9 +100,9 @@
             }"
           >
             <option selected value="">Elije una opción</option>
-            <option value="terreno_plano">Terreno plano</option>
-            <option value="terreno_pendiente">Terreno pendiente</option>
-            <option value="terreno_ondulado">Terreno ondulado</option>
+            <option value="Plano">Terreno plano</option>
+            <option value="Pendiente">Terreno pendiente</option>
+            <option value="Ondulado">Terreno ondulado</option>
           </select>
           <p
             *ngIf="
@@ -119,6 +126,7 @@
             }"
           >
             Tipo de suelo
+            <small class="text-gray-400">(opcional)</small>
           </label>
           <select
             id="soilType"
@@ -130,8 +138,8 @@
             }"
           >
             <option selected value="">Elije una opción</option>
-            <option value="suelo_arenoso">Suelos arenoso</option>
-            <option value="suelo_pedregoso">Suelos pedregoso</option>
+            <option value="Arenoso">Suelo arenoso</option>
+            <option value="Pedregoso">Suelo pedregoso</option>
           </select>
           <p
             *ngIf="

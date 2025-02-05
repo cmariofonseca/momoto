@@ -1,35 +1,44 @@
-<div class="w-full flex justify-center px-2">
+<div class="w-full flex justify-center px-2 mb-6">
   <div
     class="w-full max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow-sm md:p-8"
   >
     <div class="flex items-center space-x-2 mb-4">
       <p>Cliente :</p>
-      <b>Carlos Fonseca</b>
+      <b>{{ quotation.name }} {{ quotation.lastName }}</b>
     </div>
     <div class="flex items-center space-x-2 mb-4">
-      <p>Numero de contacto :</p>
-      <b>304 5472931</b>
+      <p>Número de contacto :</p>
+      <b>{{ quotation.phone }}</b>
     </div>
     <div class="flex items-center space-x-2 mb-4">
-      <p>Correo electronico :</p>
-      <b>cmariofonseca&#64;gmail.com</b>
+      <p>Correo electrónico :</p>
+      <b>{{ quotation.email }}</b>
     </div>
     <div class="flex items-center space-x-2 mb-4">
       <p>Municipio :</p>
-      <b>Guarne</b>
+      <b>{{ quotation.town }}</b>
     </div>
     <div class="flex items-center space-x-2 mb-4">
       <p>Área del terreno :</p>
-      <b>6000 mts cuadrados</b>
+      <b>{{ quotation.area }} m2</b>
     </div>
     <div class="flex items-center space-x-2 mb-10">
-      <p>Condiciones del terreno :</p>
-      <b>Terreno plano y no es pedregoso</b>
+      <p>Tiempo desde la última guadañada :</p>
+      <b>{{ quotation.lastDateGrassCutting }}</b>
     </div>
 
-    <div class="flex items-center space-x-2 mb-10">
-      <p class="text-2xl text-lime-600">Valor guadañada :</p>
-      <b class="text-2xl text-lime-600">600.000 pesos</b>
+    <div class="mb-2">
+      <p class="text-2xl text-lime-600">Costo del servicio de guadañada :</p>
+      <b class="text-2xl text-lime-600"
+        >{{ quotation.price | number : "1.0-0" }} pesos</b
+      >
+    </div>
+
+    <div class="mb-10">
+      <p class="text-gray-500">
+        Este es un costo estimado. Para definir el precio final, necesitamos
+        revisar algunos detalles del terreno. Contáctanos y te asesoramos.
+      </p>
     </div>
 
     <div class="w-full flex justify-around">
