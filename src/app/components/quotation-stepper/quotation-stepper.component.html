@@ -1,0 +1,67 @@
+<div class="w-full mt-8 mb-4">
+  <ol
+    class="items-center w-full ml-6 sm:ml-0 space-y-4 sm:flex sm:justify-center sm:space-x-8 sm:space-y-0 rtl:space-x-reverse"
+  >
+    <li
+      class="flex items-center space-x-2.5 rtl:space-x-reverse"
+      [class]="{
+          'text-blue-600': quotation.one(),
+          'text-gray-500': !quotation.one(),
+        }"
+    >
+      <span
+        class="flex items-center justify-center w-8 h-8 border rounded-full shrink-0"
+        [class]="{
+          'border-blue-600': quotation.one(),
+          'border-gray-500': !quotation.one(),
+        }"
+      >
+        1
+      </span>
+      <span>
+        <h3 class="font-medium leading-tight">Datos personales</h3>
+      </span>
+    </li>
+    <li
+      class="flex items-center space-x-2.5 rtl:space-x-reverse"
+      [class]="{
+          'text-blue-600': quotation.two(),
+          'text-gray-500': !quotation.two(),
+        }"
+    >
+      <span
+        class="flex items-center justify-center w-8 h-8 border rounded-full shrink-0"
+        [class]="{
+          'border-blue-600': quotation.two(),
+          'border-gray-500': !quotation.two(),
+        }"
+      >
+        2
+      </span>
+      <span>
+        <h3 class="font-medium leading-tight">Características</h3>
+        <h3 class="font-medium leading-tight">del terreno</h3>
+      </span>
+    </li>
+    <li
+      class="flex items-center space-x-2.5 rtl:space-x-reverse"
+      [class]="{
+          'text-blue-600': quotation.three(),
+          'text-gray-500': !quotation.three(),
+        }"
+    >
+      <span
+        class="flex items-center justify-center w-8 h-8 border rounded-full shrink-0"
+        [class]="{
+          'border-blue-600': quotation.three(),
+          'border-gray-500': !quotation.three(),
+        }"
+      >
+        3
+      </span>
+      <span>
+        <h3 class="font-medium leading-tight">Precotización</h3>
+      </span>
+    </li>
+  </ol>
+</div>

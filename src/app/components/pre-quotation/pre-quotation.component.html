@@ -1,0 +1,61 @@
+<div class="w-full flex justify-center px-2 mb-6">
+  <div
+    class="w-full max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow-sm md:p-8"
+  >
+    <div class="flex items-center space-x-2 mb-4">
+      <p>Cliente :</p>
+      <b>{{ quotation.name }} {{ quotation.lastName }}</b>
+    </div>
+    <div class="flex items-center space-x-2 mb-4">
+      <p>Número de contacto :</p>
+      <b>{{ quotation.phone }}</b>
+    </div>
+    <div class="flex items-center space-x-2 mb-4">
+      <p>Correo electrónico :</p>
+      <b>{{ quotation.email }}</b>
+    </div>
+    <div class="flex items-center space-x-2 mb-4">
+      <p>Municipio :</p>
+      <b>{{ quotation.town }}</b>
+    </div>
+    <div class="flex items-center space-x-2 mb-4">
+      <p>Área del terreno :</p>
+      <b>{{ quotation.area }} m2</b>
+    </div>
+    <div class="flex items-center space-x-2 mb-10">
+      <p>Tiempo desde la última guadañada :</p>
+      <b>{{ quotation.lastDateGrassCutting }}</b>
+    </div>
+
+    <div class="mb-2">
+      <p class="text-2xl text-lime-600">Costo del servicio de guadañada :</p>
+      <b class="text-2xl text-lime-600"
+        >{{ quotation.price | number : "1.0-0" }} pesos</b
+      >
+    </div>
+
+    <div class="mb-10">
+      <p class="text-gray-500">
+        Este es un costo estimado. Para definir el precio final, necesitamos
+        revisar algunos detalles del terreno. Contáctanos y te asesoramos.
+      </p>
+    </div>
+
+    <div class="w-full flex justify-around">
+      <button
+        (click)="navigateToSecondStep()"
+        class="w-36 py-2.5 px-5 text-sm font-medium rounded-lg text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+      >
+        Anterior
+      </button>
+      <a
+        [href]="whatsappLink"
+        target="_blank"
+        class="text-white bg-[#128c7e] hover:bg-[#075e54] focus:ring-4 focus:outline-none focus:ring-[#dcf8c6] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2"
+      >
+        <img src="icons/whatsapp.svg" class="w-6 h-6 mr-2" alt="" />
+        Contactar por WhatsApp
+      </a>
+    </div>
+  </div>
+</div>

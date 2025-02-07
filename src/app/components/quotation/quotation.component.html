@@ -1,0 +1,15 @@
+<app-quotation-header-text></app-quotation-header-text>
+
+<app-quotation-stepper></app-quotation-stepper>
+
+<ng-template [ngIf]="quotation.one()">
+  <app-user-info></app-user-info>
+</ng-template>
+
+<ng-template [ngIf]="quotation.two()">
+  <app-terrain-features></app-terrain-features>
+</ng-template>
+
+<ng-template [ngIf]="quotation.three()">
+  <app-pre-quotation></app-pre-quotation>
+</ng-template>

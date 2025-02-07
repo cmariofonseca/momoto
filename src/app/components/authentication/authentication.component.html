@@ -1,0 +1,65 @@
+<div (click)="goBack()" class="mb-6">
+  <img src="icons/arrow-left-circle.svg" class="w-12 h-12 mt-4 ml-4" alt="" />
+</div>
+
+<div
+  class="flex flex-col items-center justify-center px-4 py-4 mx-auto md:h-screen lg:py-0"
+>
+  <a
+    href="#"
+    class="flex items-center mb-6 text-2xl font-semibold text-gray-900"
+  >
+    <img
+      class="w-8 h-8 mr-2"
+      src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+      alt="logo"
+    />
+    momoto
+  </a>
+  <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <h1
+        class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl"
+      >
+        Inicia sesión en tu cuenta
+      </h1>
+      <form [formGroup]="form" class="space-y-4 md:space-y-6">
+        <div>
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Correo electronico
+          </label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+          />
+        </div>
+        <div>
+          <label
+            for="password"
+            class="block mb-2 text-sm font-medium text-gray-900"
+          >
+            Contraseña
+          </label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+          />
+        </div>
+
+        <button
+          (click)="onSubmit()"
+          class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
+        >
+          Ingresar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

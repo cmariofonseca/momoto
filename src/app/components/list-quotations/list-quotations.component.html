@@ -1,0 +1,66 @@
+<div (click)="goBack()">
+  <img src="icons/arrow-left-circle.svg" class="w-12 h-12 mt-4 ml-4" alt="" />
+</div>
+<div class="w-full flex justify-center mb-8">
+  <p class="text-3xl">Listado de solicitudes de cotización</p>
+</div>
+<div class="w-full flex justify-center mb-6">
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3">Cliente</th>
+          <th scope="col" class="px-6 py-3">Fecha creación</th>
+          <th scope="col" class="px-6 py-3">Teléfono</th>
+          <th scope="col" class="px-6 py-3">Municipio</th>
+          <th scope="col" class="px-6 py-3">Área</th>
+          <th scope="col" class="px-6 py-3">Último corte césped</th>
+          <th scope="col" class="px-6 py-3">Costo</th>
+          <th scope="col" class="px-6 py-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (quotation of quotations; track quotation.id) {
+        <tr class="bg-white border-b border-gray-200">
+          <!-- Datos principales -->
+          <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+            {{ quotation.name }} {{ quotation.lastName }}
+          </td>
+          <td class="px-6 py-4">{{ formatDate(quotation.createdAt) }}</td>
+          <td class="px-6 py-4">{{ quotation.phone }}</td>
+          <td class="px-6 py-4">{{ quotation.town }}</td>
+          <td class="px-6 py-4">{{ quotation.area }}</td>
+          <td class="px-6 py-4">{{ quotation.lastDateGrassCutting }}</td>
+          <td class="px-6 py-4">
+            {{ quotation.price | number : "1.0-0" }} pesos
+          </td>
+          <td class="px-6 py-4">
+            <!-- Botón para expandir la fila -->
+            <button
+              (click)="toggleDetails(quotation.id || '')"
+              class="text-blue-500 hover:underline"
+            >
+              Ver más
+            </button>
+          </td>
+        </tr>
+        <!-- Fila expandida para mostrar detalles adicionales -->
+        <tr *ngIf="expandedRow === quotation.id" class="bg-gray-50">
+          <td colspan="8" class="px-6 py-4">
+            <div class="flex flex-col space-y-2">
+              <p>
+                <strong>Correo electrónico: </strong>
+                {{ quotation.email }}
+              </p>
+              <p>
+                <strong>Topografía: </strong> {{ quotation.topographyTerrain }}
+              </p>
+              <p><strong>Tipo de terreno: </strong> {{ quotation.soilType }}</p>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
