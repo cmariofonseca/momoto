@@ -1,5 +1,5 @@
-import { inject, Injectable, signal } from '@angular/core';
-import { Quotation } from '../../interfaces/quotation';
+import { Inject, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import {
   addDoc,
   collection,
@@ -13,11 +13,15 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 
+import { Quotation } from '../../interfaces/quotation';
+
 @Injectable({
   providedIn: 'root',
 })
 export class QuotationService {
-  private firestore = inject(Firestore);
+  private firestore!: Firestore;
+  private isBrowser: boolean;
+  private _collection: any;
 
   one = signal<boolean>(true);
   two = signal<boolean>(false);
@@ -26,7 +30,15 @@ export class QuotationService {
 
   path = 'quotations';
 
-  private _collection = collection(this.firestore, this.path);
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+
+    if (this.isBrowser) {
+      this.firestore = inject(Firestore);
+
+      this._collection = collection(this.firestore, this.path);
+    }
+  }
 
   changeState(
     firstStep: boolean,
@@ -44,6 +56,7 @@ export class QuotationService {
       ...partialData,
     }));
     localStorage.setItem('quotation', JSON.stringify(this.getData()));
+
     if (this.two()) {
       this.createQuotation();
     }
@@ -54,14 +67,19 @@ export class QuotationService {
   }
 
   createQuotation(): void {
+    if (!this.firestore) return;
+
     const newQuotation = {
       ...this.quotation(),
       createdAt: Timestamp.now(),
     };
+
     addDoc(this._collection, newQuotation);
   }
 
   async getQuotations(): Promise<Quotation[]> {
+    if (!this.firestore) return [];
+
     try {
       const q = query(this._collection, orderBy('createdAt', 'desc'));
       const querySnapshot = await getDocs(q);
@@ -81,6 +99,8 @@ export class QuotationService {
     id: string,
     updatedData: Partial<Quotation>
   ): Promise<void> {
+    if (!this.firestore) return;
+
     try {
       const documentRef = doc(this.firestore, `${this.path}/${id}`);
       await updateDoc(documentRef, updatedData);
@@ -90,6 +110,8 @@ export class QuotationService {
   }
 
   async deleteQuotationById(id: string): Promise<void> {
+    if (!this.firestore) return;
+
     try {
       const documentRef = doc(this.firestore, `${this.path}/${id}`);
       await deleteDoc(documentRef);
