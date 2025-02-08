@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NgClass, NgIf } from '@angular/common';
+import { isPlatformBrowser, NgClass, NgIf } from '@angular/common';
 
 import { QuotationService } from '../../services/quotation/quotation.service';
 import { Quotation } from '../../interfaces/quotation';
@@ -17,14 +17,28 @@ import { Quotation } from '../../interfaces/quotation';
   templateUrl: './terrain-features.component.html',
   styleUrl: './terrain-features.component.css',
 })
-export class TerrainFeaturesComponent {
+export class TerrainFeaturesComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private quotationService: QuotationService
+    private quotationService: QuotationService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.createForm();
+  }
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const storedQuotation = JSON.parse(
+        localStorage.getItem('quotation') || '{}'
+      );
+      const { area, lastDateGrassCutting, topographyTerrain, soilType } =
+        storedQuotation;
+      if (area && lastDateGrassCutting && topographyTerrain && soilType) {
+        this.form.patchValue(storedQuotation);
+      }
+    }
   }
 
   createForm(): void {

@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NgClass, NgIf } from '@angular/common';
+import { isPlatformBrowser, NgClass, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { QuotationService } from '../../services/quotation/quotation.service';
@@ -17,15 +17,28 @@ import { QuotationService } from '../../services/quotation/quotation.service';
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.css',
 })
-export class UserInfoComponent {
+export class UserInfoComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private quotation: QuotationService
+    private quotation: QuotationService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.createForm();
+  }
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const storedQuotation = JSON.parse(
+        localStorage.getItem('quotation') || '{}'
+      );
+      const { name, lastName, phone, email, town } = storedQuotation;
+      if (name && lastName && phone && email && town) {
+        this.form.patchValue(storedQuotation);
+      }
+    }
   }
 
   createForm(): void {
