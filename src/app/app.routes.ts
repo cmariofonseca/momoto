@@ -30,6 +30,7 @@ export const routes: Routes = [
       import('./components/list-quotations/list-quotations.component').then(
         (m) => m.ListQuotationsComponent
       ),
+    data: { skipPrerendering: true },
     title: 'List quotations',
   },
   {
