@@ -22,7 +22,7 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody *ngIf="quotations.length">
         <ng-container *ngFor="let quotation of quotations; trackBy: trackById">
           <!-- Fila principal -->
           <tr class="bg-white border-b border-gray-200">

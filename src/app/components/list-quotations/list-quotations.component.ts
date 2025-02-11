@@ -28,7 +28,6 @@ export class ListQuotationsComponent implements OnInit {
 
   async loadQuotations() {
     this.quotations = await this.quotationService.getQuotations();
-    console.log(this.quotations);
   }
 
   toggleDetails(id: string): void {
