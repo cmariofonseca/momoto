@@ -14,7 +14,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   navigateToSignIn(): void {
-    // this.router.navigate(['/authentication']);
-    this.router.navigate(['/list-quotations']);
+    this.router.navigate(['/authentication']);
   }
 }
