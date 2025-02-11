@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-
 import { HomeComponent } from './components/home/home.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -30,6 +30,7 @@ export const routes: Routes = [
       import('./components/list-quotations/list-quotations.component').then(
         (m) => m.ListQuotationsComponent
       ),
+    canActivate: [authGuard],
     data: { skipPrerendering: true },
     title: 'List quotations',
   },
