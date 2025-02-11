@@ -162,20 +162,28 @@
               value=""
               class="w-4 h-4 border rounded-sm focus:ring-3"
               [ngClass]="{
-                'border-gray-300 bg-gray-50 focus:ring-blue-300': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
-                'border-red-500 bg-red-50 focos:ring-red-500': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
-              }"
+        'border-gray-300 bg-gray-50 focus:ring-blue-300': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
+        'border-red-500 bg-red-50 focos:ring-red-500': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
+      }"
             />
           </div>
           <label
             for="termsAndConditions"
             class="block mb-2 text-sm font-medium ml-4 text-gray-900"
             [ngClass]="{
-              'text-gray-900': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
-              'text-red-700': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
-            }"
+      'text-gray-900': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
+      'text-red-700': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
+    }"
           >
-            Acepto los términos y condiciones
+            Acepto el tratamiento de mis datos personales de acuerdo con la
+            <a
+              href="/pdf/personal_data_policy.pdf"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+            >
+              Política de Tratamiento de Datos
+            </a>
+            de Momoto.
           </label>
         </div>
       </div>
