@@ -1,5 +1,5 @@
 import { Inject, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Quotation } from '../../interfaces/quotation';
 import {
   addDoc,
   collection,
@@ -12,16 +12,14 @@ import {
   Timestamp,
   updateDoc,
 } from '@angular/fire/firestore';
-
-import { Quotation } from '../../interfaces/quotation';
+import { isPlatformServer } from '@angular/common';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuotationService {
-  private firestore!: Firestore;
-  private isBrowser: boolean;
-  private _collection: any;
+  private firestore = inject(Firestore);
 
   one = signal<boolean>(true);
   two = signal<boolean>(false);
@@ -30,15 +28,9 @@ export class QuotationService {
 
   path = 'quotations';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
+  private _collection = collection(this.firestore, this.path);
 
-    if (this.isBrowser) {
-      this.firestore = inject(Firestore);
-
-      this._collection = collection(this.firestore, this.path);
-    }
-  }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   changeState(
     firstStep: boolean,
@@ -56,7 +48,6 @@ export class QuotationService {
       ...partialData,
     }));
     localStorage.setItem('quotation', JSON.stringify(this.getData()));
-
     if (this.two()) {
       this.createQuotation();
     }
@@ -67,18 +58,32 @@ export class QuotationService {
   }
 
   createQuotation(): void {
-    if (!this.firestore) return;
-
     const newQuotation = {
       ...this.quotation(),
       createdAt: Timestamp.now(),
     };
-
     addDoc(this._collection, newQuotation);
   }
 
   async getQuotations(): Promise<Quotation[]> {
-    if (!this.firestore) return [];
+    if (isPlatformServer(this.platformId)) {
+      return [
+        {
+          area: 0,
+          email: 'string',
+          id: 'string',
+          lastDateGrassCutting: 'string',
+          lastName: 'string',
+          name: 'string',
+          phone: 'string',
+          price: 0,
+          soilType: 'string',
+          status: 'string',
+          topographyTerrain: 'string',
+          town: 'string',
+        },
+      ];
+    }
 
     try {
       const q = query(this._collection, orderBy('createdAt', 'desc'));
@@ -99,8 +104,6 @@ export class QuotationService {
     id: string,
     updatedData: Partial<Quotation>
   ): Promise<void> {
-    if (!this.firestore) return;
-
     try {
       const documentRef = doc(this.firestore, `${this.path}/${id}`);
       await updateDoc(documentRef, updatedData);
@@ -110,8 +113,6 @@ export class QuotationService {
   }
 
   async deleteQuotationById(id: string): Promise<void> {
-    if (!this.firestore) return;
-
     try {
       const documentRef = doc(this.firestore, `${this.path}/${id}`);
       await deleteDoc(documentRef);
