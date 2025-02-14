@@ -26,9 +26,12 @@
               'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('name')?.touched && form.get('name')?.invalid,
             }"
           />
-          @if(form.get('name')?.touched && form.get('name')?.invalid){
-          <p class="mt-2 text-sm text-red-600">Username already taken!</p>
-          }
+          <p
+            *ngIf="form.get('name')?.touched && form.get('name')?.invalid"
+            class="mt-2 text-sm text-red-600"
+          >
+            Por favor ingresa tu nombre.
+          </p>
         </div>
 
         <!-- lastName -->
@@ -53,9 +56,14 @@
               'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('lastName')?.touched && form.get('lastName')?.invalid,
             }"
           />
-          @if(form.get('lastName')?.touched && form.get('lastName')?.invalid){
-          <p class="mt-2 text-sm text-red-600">Username already taken!</p>
-          }
+          <p
+            *ngIf="
+              form.get('lastName')?.touched && form.get('lastName')?.invalid
+            "
+            class="mt-2 text-sm text-red-600"
+          >
+            Por favor ingresa tu apellido.
+          </p>
         </div>
 
         <!-- phone -->
@@ -84,7 +92,7 @@
             *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid"
             class="mt-2 text-sm text-red-600"
           >
-            Username already taken!
+            Por favor ingrese un número de contacto.
           </p>
         </div>
 
@@ -114,7 +122,7 @@
             *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
             class="mt-2 text-sm text-red-600"
           >
-            Username already taken!
+            Por favor ingrese un correo valido.
           </p>
         </div>
 
@@ -148,7 +156,7 @@
             *ngIf="form.get('town')?.touched && form.get('town')?.invalid"
             class="mt-2 text-sm text-red-600"
           >
-            Username already taken!
+            Por favor seleccione un municipio.
           </p>
         </div>
 
@@ -160,20 +168,21 @@
               id="termsAndConditions"
               formControlName="termsAndConditions"
               value=""
-              class="w-4 h-4 border rounded-sm focus:ring-3"
+              class="w-4 h-4 border rounded-sm focus:ring-2"
               [ngClass]="{
-        'border-gray-300 bg-gray-50 focus:ring-blue-300': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
-        'border-red-500 bg-red-50 focos:ring-red-500': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
-      }"
+                'text-blue-600 focus:ring-blue-500': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
+                'border-red-500 bg-red-50 focos:ring-red-500': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
+              }"
             />
           </div>
+
           <label
             for="termsAndConditions"
             class="block mb-2 text-sm font-medium ml-4 text-gray-900"
             [ngClass]="{
-      'text-gray-900': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
-      'text-red-700': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
-    }"
+              'text-gray-900': !form.get('termsAndConditions')?.touched || form.get('termsAndConditions')?.valid,
+              'text-red-700': form.get('termsAndConditions')?.touched && form.get('termsAndConditions')?.invalid,
+            }"
           >
             Acepto el tratamiento de mis datos personales de acuerdo con la
             <a
