@@ -36,7 +36,7 @@
             *ngIf="form.get('area')?.touched && form.get('area')?.invalid"
             class="mt-2 text-sm text-red-600"
           >
-            Username already taken!
+            Por favor ingrese el area del terreno.
           </p>
         </div>
 
@@ -73,7 +73,7 @@
             "
             class="mt-2 text-sm text-red-600"
           >
-            Username already taken!
+            Por favor elija una de las opciones.
           </p>
         </div>
 
@@ -104,15 +104,6 @@
             <option value="Pendiente">Terreno pendiente</option>
             <option value="Ondulado">Terreno ondulado</option>
           </select>
-          <p
-            *ngIf="
-              form.get('topographyTerrain')?.touched &&
-              form.get('topographyTerrain')?.invalid
-            "
-            class="mt-2 text-sm text-red-600"
-          >
-            Username already taken!
-          </p>
         </div>
 
         <!-- soilType -->
@@ -141,14 +132,6 @@
             <option value="Arenoso">Suelo arenoso</option>
             <option value="Pedregoso">Suelo pedregoso</option>
           </select>
-          <p
-            *ngIf="
-              form.get('soilType')?.touched && form.get('soilType')?.invalid
-            "
-            class="mt-2 text-sm text-red-600"
-          >
-            Username already taken!
-          </p>
         </div>
       </div>
     </form>
