@@ -17,11 +17,13 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationComponent {
   form!: FormGroup;
+  inputType: string = 'password';
+  inputIcon: string = 'icons/eye.svg';
 
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthService,
+    private readonly router: Router
   ) {
     this.createForm();
   }
@@ -31,6 +33,16 @@ export class AuthenticationComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+
+  changeInputType(): void {
+    if (this.inputType === 'password') {
+      this.inputType = 'text';
+      this.inputIcon = 'icons/eye-slash.svg';
+    } else {
+      this.inputType = 'password';
+      this.inputIcon = 'icons/eye.svg';
+    }
   }
 
   async onSubmit() {
