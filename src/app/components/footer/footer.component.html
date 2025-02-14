@@ -1,7 +1,16 @@
 <div class="absolute bottom-0 left-0 w-full text-center pt-96 pb-4">
-  <b class="block text-3xl text-white mt-2">
-    Atendemos los municipios de Guarne, Marinilla y Rionegro
-  </b>
+  <div class="w-full flex justify-center">
+    <b class="block text-3xl text-white">
+      Atendemos los municipios de Guarne, Marinilla y Rionegro
+    </b>
+    <div
+      (click)="navigateToSignIn()"
+      (keydown)="navigateToSignIn()"
+      class="mt-4 ml-2"
+    >
+      <img src="icons/globe-americas.svg" class="w-4 h-4" alt="" />
+    </div>
+  </div>
   <b class="block text-xl text-[#D4AF37] mt-2">
     Transforma tu jardín con momoto. ¡Solicita tu servicio hoy!
   </b>

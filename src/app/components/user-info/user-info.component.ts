@@ -21,10 +21,10 @@ export class UserInfoComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private quotation: QuotationService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private readonly fb: FormBuilder,
+    private readonly router: Router,
+    private readonly quotation: QuotationService,
+    @Inject(PLATFORM_ID) private readonly platformId: Object
   ) {
     this.createForm();
   }
