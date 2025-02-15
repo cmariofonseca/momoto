@@ -14,4 +14,8 @@ export class NavbarComponent {
   navigateToQuotation(): void {
     this.router.navigate(['/quotation']);
   }
+
+  navigateToSignIn(): void {
+    this.router.navigate(['/authentication']);
+  }
 }

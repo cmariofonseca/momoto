@@ -1,12 +1,21 @@
 <nav class="w-full h-24 fixed top-0 left-0 z-50">
   <div class="h-14 flex justify-center items-center bg-[#1f856f]">
-    <p class="text-white text-2xl mr-4">
-      Atendemos los municipios de Guarne, Marinilla y Rionegro
+    <p class="text-white text-2xl max-sm:text-sm sm:mr-4">
+      Atendemos los municipios de Guarne, Marinilla, Rionegro y Santa Elena
     </p>
+    <div
+      (click)="navigateToSignIn()"
+      (keypress)="navigateToSignIn()"
+      class="max-sm:hidden"
+    >
+      <img src="icons/globe-americas.svg" class="w-4 h-4 mt-2" alt="" />
+    </div>
   </div>
 
-  <div class="h-20 flex justify-between items-center bg-[#0b2621] px-8">
-    <div class="w-96 flex">
+  <div
+    class="h-20 flex sm:justify-between max-sm:justify-end items-center bg-[#0b2621] px-8"
+  >
+    <div class="max-sm:hidden w-96 flex">
       <div class="w-32">
         <p
           class="text-white text-lg hover:text-[#1f856f] hover:text-xl hover:font-bold cursor-pointer"
