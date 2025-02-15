@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './authentication.component.html',
-  styleUrl: './authentication.component.css',
 })
 export class AuthenticationComponent {
   form!: FormGroup;

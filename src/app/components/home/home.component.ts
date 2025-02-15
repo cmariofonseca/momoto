@@ -8,6 +8,5 @@ import { FooterComponent } from '../footer/footer.component';
   selector: 'app-home',
   imports: [NavbarComponent, FooterComponent, MainVideoComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
 })
 export class HomeComponent {}

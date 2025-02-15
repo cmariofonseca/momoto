@@ -9,7 +9,6 @@ import { DecimalPipe } from '@angular/common';
   standalone: true,
   imports: [DecimalPipe],
   templateUrl: './pre-quotation.component.html',
-  styleUrl: './pre-quotation.component.css',
 })
 export class PreQuotationComponent implements OnInit {
   quotation: Quotation = {};
@@ -17,7 +16,7 @@ export class PreQuotationComponent implements OnInit {
   phoneNumber = '573117290060';
   message = 'Hola, quiero más información';
 
-  constructor(private quotationService: QuotationService) {}
+  constructor(private readonly quotationService: QuotationService) {}
 
   ngOnInit(): void {
     this.quotation = this.quotationService.quotation();
