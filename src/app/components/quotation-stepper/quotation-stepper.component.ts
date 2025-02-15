@@ -6,7 +6,6 @@ import { QuotationService } from '../../services/quotation/quotation.service';
   standalone: true,
   imports: [],
   templateUrl: './quotation-stepper.component.html',
-  styleUrl: './quotation-stepper.component.css',
 })
 export class QuotationStepperComponent {
   constructor(public quotation: QuotationService) {}

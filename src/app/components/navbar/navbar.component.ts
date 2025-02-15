@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
   constructor(private readonly router: Router) {}
