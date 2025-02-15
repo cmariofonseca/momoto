@@ -15,15 +15,14 @@ import { Quotation } from '../../interfaces/quotation';
   standalone: true,
   imports: [ReactiveFormsModule, NgClass, NgIf],
   templateUrl: './terrain-features.component.html',
-  styleUrl: './terrain-features.component.css',
 })
 export class TerrainFeaturesComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private quotationService: QuotationService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private readonly fb: FormBuilder,
+    private readonly quotationService: QuotationService,
+    @Inject(PLATFORM_ID) private readonly platformId: Object
   ) {
     this.createForm();
   }
@@ -61,6 +60,8 @@ export class TerrainFeaturesComponent implements OnInit {
 
       if (lastDateGrassCutting == 'Entre 2 y 6 meses') value = value * 1.2;
       if (lastDateGrassCutting == 'Más de 6 meses') value = value * 1.5;
+
+      if (area <= 1000) value = 100000;
 
       const updatedQuotation: Quotation = {
         area,

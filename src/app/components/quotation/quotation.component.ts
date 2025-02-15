@@ -21,7 +21,6 @@ import { PreQuotationComponent } from '../pre-quotation/pre-quotation.component'
     QuotationHeaderTextComponent,
   ],
   templateUrl: './quotation.component.html',
-  styleUrl: './quotation.component.css',
 })
 export class QuotationComponent {
   constructor(public quotation: QuotationService) {}

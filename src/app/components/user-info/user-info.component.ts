@@ -15,7 +15,6 @@ import { QuotationService } from '../../services/quotation/quotation.service';
   standalone: true,
   imports: [ReactiveFormsModule, NgClass, NgIf],
   templateUrl: './user-info.component.html',
-  styleUrl: './user-info.component.css',
 })
 export class UserInfoComponent implements OnInit {
   form!: FormGroup;

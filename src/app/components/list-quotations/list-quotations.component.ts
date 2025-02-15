@@ -11,15 +11,14 @@ import { Quotation } from '../../interfaces/quotation';
   standalone: true,
   imports: [NgFor, NgIf, DecimalPipe],
   templateUrl: './list-quotations.component.html',
-  styleUrl: './list-quotations.component.css',
 })
 export class ListQuotationsComponent implements OnInit {
   quotations: Array<Quotation> = [];
   expandedRow: string | null = null;
 
   constructor(
-    private router: Router,
-    private quotationService: QuotationService
+    private readonly router: Router,
+    private readonly quotationService: QuotationService
   ) {}
 
   ngOnInit(): void {
