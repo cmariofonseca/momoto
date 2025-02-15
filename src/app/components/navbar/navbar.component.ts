@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   navigateToQuotation(): void {
     this.router.navigate(['/quotation']);
