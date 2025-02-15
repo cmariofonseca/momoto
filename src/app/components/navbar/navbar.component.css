@@ -1,8 +1,3 @@
-.bg-gradient-custom {
-  background: linear-gradient(
-    90deg,
-    #e4c678 0,
-    #f2e5c2 50%,
-    #e8d199 100%
-  ) !important;
+.base-nav:hover {
+  background-color: yellowgreen;
 }
