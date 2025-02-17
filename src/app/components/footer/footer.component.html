@@ -1,4 +1,4 @@
-<div class="absolute w-full pt-96 ml-8 max-sm:ml-2 bottom-0">
+<div class="absolute w-full pt-96 sm:px-8 max-sm:px-2 bottom-0">
   <div class="w-full mb-1">
     <p class="text-8xl max-sm:text-6xl font-bold text-white">momoto</p>
   </div>
@@ -15,10 +15,10 @@
     </i>
   </div>
 
-  <div class="w-full mb-10 max-sm:mb-16">
+  <div class="w-full mb-4 max-sm:mb-12">
     <button
       (click)="navigateToQuotation()"
-      class="flex border-white text-white hover:border-green-900 hover:text-white border hover:bg-[#0b2621] focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-10 py-3.5 text-center me-2 mb-2"
+      class="flex border-white text-white hover:border-teal-700 hover:text-white border hover:bg-teal-950 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-10 py-3.5 text-center me-2 mb-2"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -36,5 +36,14 @@
       </svg>
       Cotiza en línea
     </button>
+  </div>
+
+  <!-- medios de pago -->
+  <div class="flex justify-end items-center mb-2">
+    <img src="images/cards-white.png" class="w-6 ml-3" alt="Tarjetas" />
+    <img src="images/master-white.png" class="w-8 ml-3" alt="Master" />
+    <img src="images/visa-white.png" class="w-6 ml-3" alt="Visa" />
+    <img src="images/qr-scan-white.png" class="w-6 ml-3" alt="QR" />
+    <img src="images/money-white.png" class="w-6 ml-3" alt="Efectivo" />
   </div>
 </div>
