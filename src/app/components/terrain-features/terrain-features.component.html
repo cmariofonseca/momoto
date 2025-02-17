@@ -22,10 +22,11 @@
               id="area"
               formControlName="area"
               class="text-sm rounded-lg block w-full p-2.5"
-              placeholder="7000"
+              placeholder="2000"
+              oninput="if (this.value.length > 5) this.value = this.value.slice(0, 5);"
               [ngClass]="{
                 'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !form.get('area')?.touched || form.get('area')?.valid,
-                'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500':form.get('area')?.touched && form.get('area')?.invalid,
+                'bg-red-50 border border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500': form.get('area')?.touched && form.get('area')?.invalid,
               }"
             />
             <div class="flex w-56 ml-4 justify-center items-center">
@@ -36,7 +37,7 @@
             *ngIf="form.get('area')?.touched && form.get('area')?.invalid"
             class="mt-2 text-sm text-red-600"
           >
-            Por favor ingrese el area del terreno.
+            Por favor ingrese el área del terreno.
           </p>
         </div>
 
