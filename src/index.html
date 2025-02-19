@@ -19,6 +19,24 @@
       gtag("config", "AW-16881272789");
     </script>
 
+    <!-- Event snippet gtag_report_conversion -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof url != "undefined") {
+            window.location = url;
+          }
+        };
+        gtag("event", "conversion", {
+          send_to: "AW-16881272789/7iIACPmRr58aENWPz_E-",
+          value: 1.0,
+          currency: "COP",
+          event_callback: callback,
+        });
+        return false;
+      }
+    </script>
+
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
